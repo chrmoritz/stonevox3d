@@ -51,8 +51,14 @@ public class QbMatrix : IDisposable
         centerposition = new Vector3(x * .5f - .5f, y * .5f - .5f, z * .5f - .5f);
     }
 
-    public int getcolorindex(float r, float g, float b)
+    public int getcolorindex(float r, float g, float b, uint colorFormat)
     {
+        if (colorFormat == 1)
+        {
+            float tmp = r;
+            r = b;
+            b = tmp;
+        }
         Colort c;
         for (int i = 0; i < colors.Length; i++)
         {
